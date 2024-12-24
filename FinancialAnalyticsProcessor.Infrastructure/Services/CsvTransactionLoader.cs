@@ -2,6 +2,7 @@
 using CsvHelper.Configuration;
 using FinancialAnalyticsProcessor.Domain.Entities;
 using FinancialAnalyticsProcessor.Domain.Interfaces;
+using FinancialAnalyticsProcessor.Infrastructure.Data;
 using Microsoft.Extensions.Logging;
 using System.Globalization;
 
@@ -39,12 +40,12 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Services
 
                 await foreach (var record in csv.GetRecordsAsync<Transaction>().ConfigureAwait(false))
                 {
-                    records.Add(record); 
+                    records.Add(record);
                 }
 
                 _logger.LogInformation($"Successfully loaded {records.Count} transactions from the CSV.");
 
-                return records; 
+                return records;
             }
             catch (CsvHelperException ex)
             {
@@ -83,6 +84,9 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Services
                     Delimiter = ","
                 }))
                 {
+                    // Register the custom ClassMap
+                    csv.Context.RegisterClassMap<TransactionMap>();
+
                     var transactions = csv.GetRecords<Transaction>().ToList();
                     var transactionToRecreate = transactions.FirstOrDefault(t => t.TransactionId == transactionId);
 
@@ -106,11 +110,13 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Services
                         Merchant = transactionToRecreate.Merchant
                     };
 
+                    // Register the ClassMap for the writer
+                    csvWriter.Context.RegisterClassMap<TransactionMap>();
+
                     // Write all transactions to the new file
                     csvWriter.WriteHeader<Transaction>();
                     await csvWriter.NextRecordAsync();
 
-                    // Process transactions in parallel but write sequentially
                     var processedTransactions = await Task.WhenAll(transactions.Select(transaction =>
                     {
                         return Task.Run(() =>
@@ -125,7 +131,7 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Services
 
                     foreach (var transaction in processedTransactions)
                     {
-                        csvWriter.WriteRecord(transaction); // Write each transaction sequentially
+                        csvWriter.WriteRecord(transaction);
                         await csvWriter.NextRecordAsync();
                     }
                 }
