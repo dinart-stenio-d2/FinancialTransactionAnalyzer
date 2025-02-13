@@ -144,11 +144,6 @@ namespace FinancialAnalyticsProcessor.Application.Services
             {
                 throw new DatabaseException("An error occurred while executing a SQL Server operation.", ex);
             }
-            catch (Exception ex) 
-            {
-                _logger.LogError(ex, "An unexpected error occurred during transaction processing.");
-                throw new TransactionProcessingException("An unexpected error occurred while processing transactions.", ex);
-            }
         }
 
         /// <summary>
