@@ -7,13 +7,33 @@ using System.Linq.Expressions;
 
 namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
 {
+    /// <summary>
+    /// Provides a generic repository implementation for database operations on entities of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The entity type that the repository will manage.</typeparam>
     public class  Repository<T> : IRepository<T> where T : class
     {
+
+        /// <summary>
+        /// The database context used for accessing the database.
+        /// </summary>
         private readonly TransactionDbContext _context;
+
+        /// <summary>
+        /// The DbSet representing the entity set for <typeparamref name="T"/>.
+        /// </summary>
         private readonly DbSet<T> _dbSet;
 
+        /// <summary>
+        /// The logger used for recording informational messages, warnings, and errors.
+        /// </summary>
         private readonly ILogger<Repository<T>> _logger;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Repository{T}"/> class.
+        /// </summary>
+        /// <param name="context">The database context to use for entity operations.</param>
+        /// <param name="logger">The logger instance for recording logs.</param>
         public Repository(TransactionDbContext context, ILogger<Repository<T>> logger)
         {
             _context = context;
@@ -21,16 +41,33 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
             _logger = logger;
         }
 
+        /// <summary>
+        /// Saves all pending changes to the database asynchronously.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
         }
+
+        /// <summary>
+        /// Adds a collection of entities to the database in a single operation.
+        /// </summary>
+        /// <param name="entities">The collection of entities to add.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task AddRangeAsync(IEnumerable<T> entities)
         {
             await _context.Set<T>().AddRangeAsync(entities);
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Performs a bulk insert of a collection of entities into the database.
+        /// </summary>
+        /// <param name="entities">The collection of entities to insert.</param>
+        /// <param name="batchSize">The number of records per batch during insertion (default is 10,000).</param>
+        /// <param name="configureOptions">Optional configuration for bulk insertion.</param>
+        /// <returns>A task representing the asynchronous bulk insert operation.</returns>
         public async Task BulkInsertAsync(IEnumerable<T> entities, int batchSize = 10000, Action<BulkConfig> configureOptions = null)
         {
             _logger.LogInformation("Starting bulk insert for {EntityType}. Total records: {TotalRecords}.", typeof(T).Name, entities.Count());
@@ -97,6 +134,11 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
             }
         }
 
+        /// <summary>
+        /// Retrieves an entity by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the entity.</param>
+        /// <returns>A task representing the asynchronous operation, returning the entity if found, otherwise null.</returns>
         public async Task<T?> GetByIdAsync(Guid id)
         {
             _logger.LogInformation("Retrieving entity with ID {Id} from the database.", id);
@@ -137,6 +179,11 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
             }
         }
 
+        /// <summary>
+        /// Retrieves all entities of type <typeparamref name="T"/>, optionally including related entities.
+        /// </summary>
+        /// <param name="includes">Optional navigation properties to include in the query.</param>
+        /// <returns>A task representing the asynchronous operation, returning a collection of all entities.</returns>
         public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes)
         {
             _logger.LogInformation("Retrieving all entities with related data from the database.");
@@ -167,6 +214,11 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
             }
         }
 
+        /// <summary>
+        /// Adds a new entity to the database.
+        /// </summary>
+        /// <param name="entity">The entity to add.</param>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task AddAsync(T entity)
         {
             _logger.LogInformation("Adding a new entity to the database: {Entity}.", entity);
@@ -186,6 +238,12 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
                 throw;
             }
         }
+        
+        /// <summary>
+        /// Updates an existing entity in the database.
+        /// </summary>
+        /// <param name="entity">The entity with updated values.</param>
+        /// <returns>A task representing the asynchronous update operation.</returns>
         public async Task UpdateAsync(T entity)
         {
             _logger.LogInformation("Updating an entity in the database: {Entity}.", entity);
@@ -219,6 +277,11 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
             }
         }
 
+        /// <summary>
+        /// Deletes an entity by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the entity to delete.</param>
+        /// <returns>A task representing the asynchronous delete operation, returning true if the entity was deleted successfully, otherwise false.</returns>
         public async Task<bool> DeleteAsync(Guid id)
         {
             _logger.LogInformation("Deleting entity with ID {Id} from the database.", id);
@@ -247,7 +310,11 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
                 return false; // Return false if an exception occurred
             }
         }
-
+        /// <summary>
+        /// Deletes transactions based on a list of transaction IDs.
+        /// </summary>
+        /// <param name="transactionIds">A collection of transaction IDs to delete.</param>
+        /// <returns>A task representing the asynchronous delete operation, returning the number of records deleted.</returns>
         public async Task<int> DeleteTransactionsByIdsAsync(IEnumerable<Guid> transactionIds)
         {
             if (transactionIds == null || !transactionIds.Any())
@@ -294,6 +361,12 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
             return totalDeleted;
         }
 
+        /// <summary>
+        /// Retrieves all entity identifiers based on a specified key selector.
+        /// </summary>
+        /// <typeparam name="TKey">The type of the key to retrieve.</typeparam>
+        /// <param name="keySelector">An expression defining the key to retrieve.</param>
+        /// <returns>A task representing the asynchronous operation, returning a collection of entity identifiers.</returns>
         public async Task<IEnumerable<TKey>> GetAllEntityIdsAsync<TKey>(Expression<Func<T, TKey>> keySelector)
         {
             if (keySelector == null)
@@ -305,6 +378,11 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Repositories.Generic
                 .Select(keySelector)
                 .ToListAsync();
         }
+        /// <summary>
+        /// Finds entities that match a specified predicate.
+        /// </summary>
+        /// <param name="predicate">The expression to filter the entities.</param>
+        /// <returns>A task representing the asynchronous operation, returning a collection of matching entities.</returns>
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
             _logger.LogInformation("Searching for entities with a given predicate.");
