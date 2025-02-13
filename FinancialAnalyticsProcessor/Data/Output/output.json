@@ -1,3 +1,632 @@
 {
-  
+  "UsersSummary": [
+    {
+      "UserId": "714b45e6-4c9b-4605-a6b1-51597fee2cc9",
+      "TotalIncome": 57472.27,
+      "TotalExpense": -13453.75
+    },
+    {
+      "UserId": "6e3c785b-99c4-4fd5-b464-e1e65a41b835",
+      "TotalIncome": 62330.85,
+      "TotalExpense": -25448.88
+    },
+    {
+      "UserId": "feb21088-b4fe-4115-aa2e-863c3153d7cd",
+      "TotalIncome": 54261.76,
+      "TotalExpense": -20909.16
+    },
+    {
+      "UserId": "29d5ae5b-b671-40dc-80c6-582897e4c42a",
+      "TotalIncome": 68461.28,
+      "TotalExpense": -14584.12
+    },
+    {
+      "UserId": "46c48a23-64f6-47a0-ae35-f7b93e19de21",
+      "TotalIncome": 62344.61,
+      "TotalExpense": -18766.62
+    },
+    {
+      "UserId": "2592993a-f07e-41d7-873b-748afd256bf7",
+      "TotalIncome": 84254.93,
+      "TotalExpense": -17270.82
+    },
+    {
+      "UserId": "e26d5812-446f-4b6e-b694-6a9d915571f5",
+      "TotalIncome": 58910.43,
+      "TotalExpense": -14543.14
+    },
+    {
+      "UserId": "d84855c9-b116-4166-b0c8-b5b2a0482fbb",
+      "TotalIncome": 89672.52,
+      "TotalExpense": -13579.56
+    },
+    {
+      "UserId": "17b7b433-09aa-48b5-a80a-56b1daf08cde",
+      "TotalIncome": 50872.22,
+      "TotalExpense": -18936.05
+    },
+    {
+      "UserId": "7569ad40-fd7c-4daa-8e9f-74935f3ee249",
+      "TotalIncome": 66586.76,
+      "TotalExpense": -17346.15
+    },
+    {
+      "UserId": "f3ebd1b5-3bb7-4ee8-a017-1f54027d3546",
+      "TotalIncome": 78040.23,
+      "TotalExpense": -14627.52
+    },
+    {
+      "UserId": "c7ca571c-c3be-40ad-90ab-695fe9334d7b",
+      "TotalIncome": 56191.71,
+      "TotalExpense": -17523.22
+    },
+    {
+      "UserId": "5df2e2f7-bf36-48c8-a4e4-ff2fba95e4e1",
+      "TotalIncome": 53345.57,
+      "TotalExpense": -17229.07
+    },
+    {
+      "UserId": "69af5c69-3352-4206-aa9f-0fe28a02a8d3",
+      "TotalIncome": 43332.25,
+      "TotalExpense": -16843.78
+    },
+    {
+      "UserId": "97642b7e-ef49-4027-b581-32a7109e0008",
+      "TotalIncome": 58885.57,
+      "TotalExpense": -17097.75
+    },
+    {
+      "UserId": "27c83f36-833f-4888-bfd1-6586028f12dc",
+      "TotalIncome": 34487.75,
+      "TotalExpense": -17120.48
+    },
+    {
+      "UserId": "114434a5-7c06-45a9-98d0-4daa642a4c84",
+      "TotalIncome": 73768.42,
+      "TotalExpense": -14474.34
+    },
+    {
+      "UserId": "a1d16db8-a2be-4cb0-a403-85f26e0da541",
+      "TotalIncome": 54404.56,
+      "TotalExpense": -18101.17
+    },
+    {
+      "UserId": "bc115e4c-de1a-472f-bf8f-4f319f264f31",
+      "TotalIncome": 57240.70,
+      "TotalExpense": -15318.32
+    },
+    {
+      "UserId": "45a16a7e-997d-4ebc-844d-498deca01ca3",
+      "TotalIncome": 65655.36,
+      "TotalExpense": -22628.70
+    },
+    {
+      "UserId": "a30a33b3-82d6-40ad-9262-dc4d6ca140b6",
+      "TotalIncome": 40539.14,
+      "TotalExpense": -11111.54
+    },
+    {
+      "UserId": "28b42d0d-6910-4943-a2b2-95e42cb9fc48",
+      "TotalIncome": 74855.96,
+      "TotalExpense": -16761.07
+    },
+    {
+      "UserId": "84dacd8b-b6d2-4966-b09c-0b90d5bf6bd2",
+      "TotalIncome": 62226.58,
+      "TotalExpense": -16960.93
+    },
+    {
+      "UserId": "617de68f-f606-4605-9fbc-8aaa02d6803d",
+      "TotalIncome": 59319.40,
+      "TotalExpense": -13387.24
+    },
+    {
+      "UserId": "9e13403c-6a97-45c8-a2f2-e58c39cbf026",
+      "TotalIncome": 65411.04,
+      "TotalExpense": -20340.05
+    },
+    {
+      "UserId": "df6dd702-9f92-4324-9480-4e92ca7be611",
+      "TotalIncome": 68252.05,
+      "TotalExpense": -16281.33
+    },
+    {
+      "UserId": "8a33ba29-e459-4bce-bfef-3f0eb32e2d1a",
+      "TotalIncome": 66097.53,
+      "TotalExpense": -21125.25
+    },
+    {
+      "UserId": "05df224c-985b-4ca0-b5e8-837faeb69dec",
+      "TotalIncome": 37953.37,
+      "TotalExpense": -15983.54
+    },
+    {
+      "UserId": "18e425c7-8984-4e8e-bd99-3b05788931f0",
+      "TotalIncome": 56712.62,
+      "TotalExpense": -14735.97
+    },
+    {
+      "UserId": "c5d12f97-4b1c-4dbb-8986-6264f9231a72",
+      "TotalIncome": 62212.73,
+      "TotalExpense": -22649.91
+    },
+    {
+      "UserId": "962bb87b-ba30-4ce8-97c8-82a1d1a2ddf5",
+      "TotalIncome": 66530.53,
+      "TotalExpense": -12120.72
+    },
+    {
+      "UserId": "665ce769-c105-4a92-aca4-5f54b18912cc",
+      "TotalIncome": 41764.66,
+      "TotalExpense": -20332.98
+    },
+    {
+      "UserId": "6e443203-60a3-499e-9be9-1b767f32094e",
+      "TotalIncome": 80730.04,
+      "TotalExpense": -16364.29
+    },
+    {
+      "UserId": "566469e1-86d3-4bdd-a4d8-c77380653c84",
+      "TotalIncome": 75908.51,
+      "TotalExpense": -16405.17
+    },
+    {
+      "UserId": "bffe700b-6669-4391-8b4c-ddf7f3637241",
+      "TotalIncome": 49688.40,
+      "TotalExpense": -16635.89
+    },
+    {
+      "UserId": "32d50630-565e-4ee3-b650-1abeeee984e4",
+      "TotalIncome": 50129.79,
+      "TotalExpense": -13615.77
+    },
+    {
+      "UserId": "49fb89a3-bdf7-481d-838f-1f02237df0b7",
+      "TotalIncome": 78316.09,
+      "TotalExpense": -13948.82
+    },
+    {
+      "UserId": "a2c7ea8a-915f-4602-80f2-0915757b6960",
+      "TotalIncome": 51632.79,
+      "TotalExpense": -12805.94
+    },
+    {
+      "UserId": "292215f3-c0b9-409f-b9a7-f4603a4da3ab",
+      "TotalIncome": 49526.03,
+      "TotalExpense": -19047.93
+    },
+    {
+      "UserId": "4fe1a98b-85e5-4418-8a04-cf82d72ab78d",
+      "TotalIncome": 53775.11,
+      "TotalExpense": -16989.40
+    },
+    {
+      "UserId": "32bb103e-d8fd-4be2-9502-52ead7cff02a",
+      "TotalIncome": 91120.33,
+      "TotalExpense": -15869.77
+    },
+    {
+      "UserId": "53c9e722-cfcb-4b06-8c55-72687e1bc23c",
+      "TotalIncome": 48832.76,
+      "TotalExpense": -23351.75
+    },
+    {
+      "UserId": "eb8ee2b6-27ad-4165-9b31-ba5c378e3d33",
+      "TotalIncome": 56628.98,
+      "TotalExpense": -17879.35
+    },
+    {
+      "UserId": "37cf04de-a735-43b9-9f1e-0a5a6e76c6c0",
+      "TotalIncome": 48795.08,
+      "TotalExpense": -21915.31
+    },
+    {
+      "UserId": "82925d9e-88d2-4331-b17e-a47d0fb66580",
+      "TotalIncome": 45206.99,
+      "TotalExpense": -16687.14
+    },
+    {
+      "UserId": "debaf380-3ecb-4e55-9a99-086711ebb958",
+      "TotalIncome": 66272.10,
+      "TotalExpense": -17299.71
+    },
+    {
+      "UserId": "9e1ac2ef-e6f8-4b2d-a845-a6a122e44b9f",
+      "TotalIncome": 65181.79,
+      "TotalExpense": -17709.56
+    },
+    {
+      "UserId": "ace1bde2-61f1-444e-a70c-7f5d40b30b52",
+      "TotalIncome": 47855.57,
+      "TotalExpense": -14915.79
+    },
+    {
+      "UserId": "01944cdd-63b3-4060-a9d1-9fbec1c72311",
+      "TotalIncome": 62815.15,
+      "TotalExpense": -15713.69
+    },
+    {
+      "UserId": "5a39cdad-b2f5-4e9f-a230-5f79ce57e652",
+      "TotalIncome": 55777.26,
+      "TotalExpense": -16682.59
+    },
+    {
+      "UserId": "eb920a47-69e3-4e7e-86b1-b09b1ac67936",
+      "TotalIncome": 49559.11,
+      "TotalExpense": -14345.37
+    },
+    {
+      "UserId": "f3207af1-b99b-4202-879a-9ba4f982e90d",
+      "TotalIncome": 50246.24,
+      "TotalExpense": -13519.93
+    },
+    {
+      "UserId": "234326f6-8a3a-4b56-9d07-c9821ae1e5ca",
+      "TotalIncome": 75613.11,
+      "TotalExpense": -13071.53
+    },
+    {
+      "UserId": "1bfdab10-f245-4ab9-8e7a-661c1f10727d",
+      "TotalIncome": 42889.23,
+      "TotalExpense": -22713.56
+    },
+    {
+      "UserId": "c67a1e0d-b1c8-4fde-afce-c6cdfc41ff60",
+      "TotalIncome": 42356.60,
+      "TotalExpense": -16901.49
+    },
+    {
+      "UserId": "b873de6a-2db2-4dfa-8517-6bc16bb07deb",
+      "TotalIncome": 45283.15,
+      "TotalExpense": -13969.39
+    },
+    {
+      "UserId": "4c95ba0c-b03a-4cc1-a491-fdad52b6701c",
+      "TotalIncome": 68931.00,
+      "TotalExpense": -13490.97
+    },
+    {
+      "UserId": "457a5349-71e1-4d02-87e0-e4dd4aa899ff",
+      "TotalIncome": 55315.68,
+      "TotalExpense": -17055.46
+    },
+    {
+      "UserId": "44805aa4-03b7-4b66-93f1-91ecae14e4f1",
+      "TotalIncome": 54824.89,
+      "TotalExpense": -12998.82
+    },
+    {
+      "UserId": "16223c5f-95ea-488e-b147-92215e2e804a",
+      "TotalIncome": 71931.33,
+      "TotalExpense": -18952.75
+    },
+    {
+      "UserId": "b86c6c50-92e0-4cf5-85bf-ddab9a7327e0",
+      "TotalIncome": 47302.58,
+      "TotalExpense": -10954.05
+    },
+    {
+      "UserId": "1e5e2c05-7ab3-43a8-9d01-4886704a63fc",
+      "TotalIncome": 44923.91,
+      "TotalExpense": -20295.98
+    },
+    {
+      "UserId": "001b324b-d87f-4ec7-a0f2-1820e07db60c",
+      "TotalIncome": 68679.51,
+      "TotalExpense": -23634.85
+    },
+    {
+      "UserId": "75035d48-c3b8-43b3-b02d-4e4a779e71aa",
+      "TotalIncome": 53897.39,
+      "TotalExpense": -23133.11
+    },
+    {
+      "UserId": "80e620af-ef76-4874-9b41-beb78777ec55",
+      "TotalIncome": 71718.26,
+      "TotalExpense": -17426.49
+    },
+    {
+      "UserId": "4dba5394-ffd6-4f1a-95d1-528bc9bfada7",
+      "TotalIncome": 46292.25,
+      "TotalExpense": -18035.95
+    },
+    {
+      "UserId": "f96b8c09-37e1-4485-8fad-42a57aca97e1",
+      "TotalIncome": 79349.28,
+      "TotalExpense": -11525.26
+    },
+    {
+      "UserId": "a6535672-c258-4c51-b123-94cf41c97749",
+      "TotalIncome": 32282.59,
+      "TotalExpense": -15931.99
+    },
+    {
+      "UserId": "46434235-4850-4921-bc63-cf5691158f23",
+      "TotalIncome": 48451.19,
+      "TotalExpense": -18207.53
+    },
+    {
+      "UserId": "6fdd60c5-d4c1-4dc4-aabc-6a3cda881534",
+      "TotalIncome": 58709.98,
+      "TotalExpense": -15064.37
+    },
+    {
+      "UserId": "ca98df51-9b2d-4016-8590-915c14bac790",
+      "TotalIncome": 67954.01,
+      "TotalExpense": -14521.69
+    },
+    {
+      "UserId": "8a5758ae-1b4c-42c9-a0b3-7d31397f5a33",
+      "TotalIncome": 47840.68,
+      "TotalExpense": -16975.20
+    },
+    {
+      "UserId": "4d012c78-b2ec-44f9-a888-4857c9f92a7b",
+      "TotalIncome": 73572.63,
+      "TotalExpense": -18130.36
+    },
+    {
+      "UserId": "0b706dc1-50f2-4dcc-8e8f-502da564552d",
+      "TotalIncome": 47848.39,
+      "TotalExpense": -16986.32
+    },
+    {
+      "UserId": "d6ec8059-c00f-4d3d-803f-8b751e50ac2c",
+      "TotalIncome": 44735.47,
+      "TotalExpense": -18990.84
+    },
+    {
+      "UserId": "fedfda7c-322c-4e59-9a60-5d389faced29",
+      "TotalIncome": 74255.39,
+      "TotalExpense": -18706.31
+    },
+    {
+      "UserId": "091e4bce-52dd-41a5-9e59-ae31aabd6f57",
+      "TotalIncome": 74954.41,
+      "TotalExpense": -18123.84
+    },
+    {
+      "UserId": "6af17093-6648-45b2-a1ad-7a4f8dd70c30",
+      "TotalIncome": 66430.13,
+      "TotalExpense": -14799.74
+    },
+    {
+      "UserId": "0fc70501-0f91-4e32-a598-475efa9e338b",
+      "TotalIncome": 62533.86,
+      "TotalExpense": -14622.40
+    },
+    {
+      "UserId": "2b5ed1cd-0c90-4d59-8e79-b7b0f28c36fc",
+      "TotalIncome": 53102.03,
+      "TotalExpense": -19325.62
+    },
+    {
+      "UserId": "b4938142-cac7-41b6-a4a2-fbfe21212296",
+      "TotalIncome": 63091.85,
+      "TotalExpense": -24103.86
+    },
+    {
+      "UserId": "79239d13-63d7-4353-a003-30085b44e5f4",
+      "TotalIncome": 46914.51,
+      "TotalExpense": -16226.14
+    },
+    {
+      "UserId": "8313784c-dafb-439b-b19c-4fdb98a7cc69",
+      "TotalIncome": 53332.50,
+      "TotalExpense": -15009.89
+    },
+    {
+      "UserId": "de0d86b8-a04d-4817-a93e-da70c34af34f",
+      "TotalIncome": 37234.45,
+      "TotalExpense": -12687.25
+    },
+    {
+      "UserId": "eedeb07a-4a3a-44f4-8d11-510b45666e73",
+      "TotalIncome": 51521.23,
+      "TotalExpense": -22224.78
+    },
+    {
+      "UserId": "e331cb7d-c1f5-4577-8278-ff124e57fdd0",
+      "TotalIncome": 53960.34,
+      "TotalExpense": -12823.48
+    },
+    {
+      "UserId": "2776288a-ba63-4e21-8c19-e780517590e0",
+      "TotalIncome": 61545.85,
+      "TotalExpense": -11589.40
+    },
+    {
+      "UserId": "ea2f5361-9586-48b2-819d-6cf3922d9105",
+      "TotalIncome": 58694.67,
+      "TotalExpense": -18485.52
+    },
+    {
+      "UserId": "4cd255ba-2d4a-4269-8fae-75943c577de1",
+      "TotalIncome": 50393.85,
+      "TotalExpense": -17409.63
+    },
+    {
+      "UserId": "4f57a488-556b-4f8e-8ae9-0204fd51bf77",
+      "TotalIncome": 69430.38,
+      "TotalExpense": -22578.42
+    },
+    {
+      "UserId": "043a2dc2-687f-4c43-a9ed-8e41042105fd",
+      "TotalIncome": 35638.12,
+      "TotalExpense": -13916.90
+    },
+    {
+      "UserId": "261260ae-87d5-4423-a5a1-4be6fbe7f075",
+      "TotalIncome": 66930.12,
+      "TotalExpense": -18335.55
+    },
+    {
+      "UserId": "433221cb-0e67-4c4b-8839-d01fe703581c",
+      "TotalIncome": 56216.09,
+      "TotalExpense": -23747.69
+    },
+    {
+      "UserId": "11ed1ae2-eaf7-4d3b-88f9-e5644c367c37",
+      "TotalIncome": 68597.34,
+      "TotalExpense": -17025.69
+    },
+    {
+      "UserId": "6cd2838f-eec4-4710-9caa-89663a66bf58",
+      "TotalIncome": 61414.19,
+      "TotalExpense": -12033.10
+    },
+    {
+      "UserId": "2eb32a09-8303-4b05-8711-59f778eb086d",
+      "TotalIncome": 49010.48,
+      "TotalExpense": -19937.55
+    },
+    {
+      "UserId": "85d8a3ec-644c-4901-aa29-59b9d7f81803",
+      "TotalIncome": 55585.75,
+      "TotalExpense": -17373.61
+    },
+    {
+      "UserId": "dbcfa6b6-ff4f-4f8f-8f89-f38e3fdbbb78",
+      "TotalIncome": 29130.46,
+      "TotalExpense": -22144.05
+    },
+    {
+      "UserId": "a83082b6-9c3a-407b-9612-eeea315e60bc",
+      "TotalIncome": 47683.46,
+      "TotalExpense": -16753.62
+    },
+    {
+      "UserId": "facae899-3f31-4064-9a0c-f8bf61e11e1c",
+      "TotalIncome": 87299.43,
+      "TotalExpense": -16369.04
+    },
+    {
+      "UserId": "edb499e5-9620-4940-b09d-277ab394d96b",
+      "TotalIncome": 59610.37,
+      "TotalExpense": -17904.80
+    },
+    {
+      "UserId": "e732ccf4-700b-49bc-a1c8-325310f3f40d",
+      "TotalIncome": 45015.42,
+      "TotalExpense": -11398.08
+    },
+    {
+      "UserId": "893c20b1-ed13-45bd-8114-a5999aef8424",
+      "TotalIncome": 70001.79,
+      "TotalExpense": -16025.06
+    },
+    {
+      "UserId": "8107538c-9987-464a-8e17-c9461a432970",
+      "TotalIncome": 47984.06,
+      "TotalExpense": -19357.83
+    },
+    {
+      "UserId": "1e8410d4-7066-47ba-b17c-c85526c33d98",
+      "TotalIncome": 48276.17,
+      "TotalExpense": -24804.08
+    },
+    {
+      "UserId": "5e731c77-65ab-4ea9-8d0b-e1ed0f4c39a0",
+      "TotalIncome": 79596.38,
+      "TotalExpense": -14285.82
+    },
+    {
+      "UserId": "09e47aa9-78fc-4417-b1d2-1188a2c2937d",
+      "TotalIncome": 51342.64,
+      "TotalExpense": -12668.00
+    },
+    {
+      "UserId": "4c406cc1-fb4c-4045-987a-2edf37d3473f",
+      "TotalIncome": 47840.57,
+      "TotalExpense": -23829.59
+    },
+    {
+      "UserId": "60a994b7-cd29-44c3-a8c1-bc3a0cda88c5",
+      "TotalIncome": 47558.27,
+      "TotalExpense": -21738.25
+    },
+    {
+      "UserId": "a88ac7ce-44c7-4c79-8c3b-9d19cb9c971f",
+      "TotalIncome": 47467.95,
+      "TotalExpense": -17133.59
+    },
+    {
+      "UserId": "f41f8689-5fed-43f9-8412-2799eeec99d0",
+      "TotalIncome": 61152.65,
+      "TotalExpense": -11818.91
+    },
+    {
+      "UserId": "00c85154-1bb4-42b2-af66-d81bc666a28f",
+      "TotalIncome": 72434.64,
+      "TotalExpense": -21945.99
+    },
+    {
+      "UserId": "09c78175-31ab-4510-bc88-150d73960c11",
+      "TotalIncome": 63604.59,
+      "TotalExpense": -17602.99
+    },
+    {
+      "UserId": "21da9648-7032-4d37-810e-159f4cdbd211",
+      "TotalIncome": 57405.11,
+      "TotalExpense": -21020.27
+    },
+    {
+      "UserId": "ccce2b75-25b7-4042-95ca-871d42e606a0",
+      "TotalIncome": 66839.94,
+      "TotalExpense": -14696.39
+    },
+    {
+      "UserId": "567e43cb-2bbe-4b0a-9794-f56159d0f9a9",
+      "TotalIncome": 86156.18,
+      "TotalExpense": -18872.51
+    },
+    {
+      "UserId": "41293282-eaeb-45ba-a27d-f1ccdc34b74a",
+      "TotalIncome": 48022.20,
+      "TotalExpense": -17835.83
+    },
+    {
+      "UserId": "40a2e6be-4e89-4669-a76a-e4c9139f9e1a",
+      "TotalIncome": 53250.88,
+      "TotalExpense": -15254.37
+    },
+    {
+      "UserId": "af2a2ae7-ae64-41b9-ba6f-386c8eb5286b",
+      "TotalIncome": 93917.63,
+      "TotalExpense": -18740.07
+    },
+    {
+      "UserId": "b644389d-cb07-4ffc-9301-8f962e2e19b3",
+      "TotalIncome": 61987.37,
+      "TotalExpense": -22068.75
+    },
+    {
+      "UserId": "0f98c7f3-12ed-4419-8b02-654cfde9f53e",
+      "TotalIncome": 56687.90,
+      "TotalExpense": -16382.49
+    },
+    {
+      "UserId": "94c9f6dd-a797-4fc1-90e5-eb5198bc6657",
+      "TotalIncome": 40438.85,
+      "TotalExpense": -14027.95
+    }
+  ],
+  "TopCategories": [
+    {
+      "Category": "Utilities",
+      "TransactionsCount": 1698
+    },
+    {
+      "Category": "Salary",
+      "TransactionsCount": 1679
+    },
+    {
+      "Category": "Shopping",
+      "TransactionsCount": 1674
+    }
+  ],
+  "HighestSpender": {
+    "UserId": "d84855c9-b116-4166-b0c8-b5b2a0482fbb",
+    "TotalSpent": 76092.96
+  }
 }

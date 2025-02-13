@@ -84,11 +84,19 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Services
                     Delimiter = ","
                 }))
                 {
-                    // Register the custom ClassMap
                     csv.Context.RegisterClassMap<TransactionMap>();
 
-                    var transactions = csv.GetRecords<Transaction>().ToList();
-                    var transactionToRecreate = transactions.FirstOrDefault(t => t.TransactionId == transactionId);
+                    var transactionToRecreate = default(Transaction);
+                    var transactions = new List<Transaction>();
+
+                    await foreach (var transaction in csv.GetRecordsAsync<Transaction>())
+                    {
+                        if (transaction.TransactionId == transactionId)
+                        {
+                            transactionToRecreate = transaction;
+                        }
+                        transactions.Add(transaction);
+                    }
 
                     if (transactionToRecreate == null)
                     {
@@ -98,7 +106,6 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Services
 
                     _logger.LogInformation("Recreating transaction with ID {TransactionId}.", transactionId);
 
-                    // Recreate the transaction with the new description
                     var recreatedTransaction = new Transaction
                     {
                         TransactionId = transactionId,
@@ -110,35 +117,16 @@ namespace FinancialAnalyticsProcessor.Infrastructure.Services
                         Merchant = transactionToRecreate.Merchant
                     };
 
-                    // Register the ClassMap for the writer
                     csvWriter.Context.RegisterClassMap<TransactionMap>();
 
-                    // Write all transactions to the new file
-                    csvWriter.WriteHeader<Transaction>();
-                    await csvWriter.NextRecordAsync();
-
-                    var processedTransactions = await Task.WhenAll(transactions.Select(transaction =>
-                    {
-                        return Task.Run(() =>
-                        {
-                            if (transaction.TransactionId == transactionId)
-                            {
-                                return recreatedTransaction;
-                            }
-                            return transaction;
-                        });
-                    }));
-
-                    foreach (var transaction in processedTransactions)
-                    {
-                        csvWriter.WriteRecord(transaction);
-                        await csvWriter.NextRecordAsync();
-                    }
+                    await csvWriter.WriteRecordsAsync(transactions.Select(t =>
+                        t.TransactionId == transactionId ? recreatedTransaction : t));
                 }
 
-                // Replace the original file with the temporary file
-                File.Delete(csvFilePath);
-                File.Move(tempFilePath, csvFilePath);
+                // Replace the original file with the temporary one asynchronously
+                await Task.Run(() => File.Delete(csvFilePath));
+                await Task.Run(() => File.Move(tempFilePath, csvFilePath));
+
                 _logger.LogInformation("Successfully recreated transaction with ID {TransactionId} in file {CsvFilePath}.", transactionId, csvFilePath);
             }
             catch (Exception ex)
