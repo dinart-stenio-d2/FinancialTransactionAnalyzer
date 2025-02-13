@@ -2,6 +2,9 @@
 
 namespace FinancialAnalyticsProcessor.Domain.Entities
 {
+    /// <summary>
+    /// Transaction entity
+    /// </summary>
     public class Transaction : Entity, IAggregateRoot
     {
         public Guid TransactionId { get; set; }
