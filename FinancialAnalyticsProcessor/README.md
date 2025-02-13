@@ -1,175 +1,89 @@
+﻿# **Financial Analytics Processor - Execution Guide for Visual Studio 2022**
 
-# Financial Analytics Processor
-
-## Overview
-
-The **Financial Analytics Processor** is a robust solution designed to efficiently process financial transactions. Built with modern technologies such as **.NET 8**, **Entity Framework Core**, and **Hangfire**, the application ensures scalability, reliability, and maintainability. It includes a **Worker** (background service) to execute recurring jobs, providing efficient data processing capabilities.
+This guide explains how to run the **Financial Analytics Processor** in **Visual Studio 2022**, leveraging the **launchSettings.json** file for easier execution configurations.
 
 ---
 
-## Prerequisites
+## **📌 Using launchSettings.json for Execution**
 
-Before running the application locally, ensure your environment meets the following requirements:
+The project uses **launchSettings.json** to manage execution profiles in **Visual Studio 2022**. This file allows for **predefined execution modes**, so you don't need to manually pass command-line arguments.
 
-1. **Branch**: Switch to the `develop` branch.
-   ```bash
-   git checkout develop
-   ```
-
-2. **SQL Server**: Install and run a local instance of SQL Server.
-
-3. **.NET 8 SDK**: Verify that .NET 8 SDK is installed.
-   ```bash
-   dotnet --version
-   ```
-
----
-
-## Running the Application Locally
-
-### 1. Clone the Repository
-
-Clone the repository and navigate to the project directory:
-```bash
-git clone <repository-url>
-cd FinancialAnalyticsProcessor
-git checkout develop
+### **📂 Location of launchSettings.json**
+The **launchSettings.json** file is located in:
+```
+FinancialAnalyticsProcessor/Properties/launchSettings.json
 ```
 
-### 2. Configure the Connection String
+### **🔧 Configured Execution Profiles**
+This project includes **two execution profiles**:
 
-Update the `appsettings.json` file in the project root with your SQL Server connection string:
+#### **1️⃣ FinancialAnalyticsProcessor (Local Testing Mode)**
 ```json
-"ConnectionStrings": {
-  "DefaultConnection": "Server=(localdb)\mssqllocaldb;Database=FinancialAnalyticsDB;Trusted_Connection=True;"
+"FinancialAnalyticsProcessor": {
+  "commandName": "Project",
+  "environmentVariables": {
+    "DOTNET_ENVIRONMENT": "Development"
+  },
+  "dotnetRunMessages": true
 }
 ```
+- **Purpose:** Runs the job **once** for local testing (without Hangfire).
+- **How to Run:**
+  - **Visual Studio**: Select **FinancialAnalyticsProcessor** as the startup profile.
+  - **CLI Command**:
+    ```bash
+    dotnet run --project FinancialAnalyticsProcessor
+    ```
 
-### 3. Apply Database Migrations
+---
 
-Set up the database schema by running the following commands:
-```bash
-Add-Migration InitialMigration -StartupProject FinancialAnalyticsProcessor -Project FinancialAnalyticsProcessor.Infrastructure
-Update-Database -StartupProject FinancialAnalyticsProcessor -Project FinancialAnalyticsProcessor.Infrastructure
+#### **2️⃣ HangfireExecution (Recurring Jobs with Hangfire)**
+```json
+"HangfireExecution": {
+  "commandName": "Project",
+  "commandLineArgs": "--use-hangfire",
+  "environmentVariables": {
+    "DOTNET_ENVIRONMENT": "Development"
+  },
+  "dotnetRunMessages": true
+}
 ```
+- **Purpose:** Runs the job **recurringly** using **Hangfire**.
+- **How to Run:**
+  - **Visual Studio**: Select **HangfireExecution** as the startup profile.
+  - **CLI Command**:
+    ```bash
+    dotnet run --project FinancialAnalyticsProcessor -- --use-hangfire
+    ```
 
-### 4. Run the Application
+---
 
-Start the application using:
-```bash
-dotnet run --project FinancialAnalyticsProcessor
-```
+## **📌 Running the Application in Visual Studio 2022**
 
-### 5. Access the Hangfire Dashboard
+### **1️⃣ Select Execution Mode**
+1. Open **Visual Studio 2022**.
+2. In **Solution Explorer**, right-click on the **FinancialAnalyticsProcessor** project.
+3. Select **Properties** → **Debug**.
+4. Under **Profile**, choose:
+   - `FinancialAnalyticsProcessor` (**for local testing**)
+   - `HangfireExecution` (**for recurring jobs**)
+5. Click **Apply** and **Save**.
 
-Once the application is running, navigate to the Hangfire Dashboard in your browser:
+### **2️⃣ Run the Application**
+- Press **F5** to start the application with debugging.
+- OR press **Ctrl + F5** to start without debugging.
+
+---
+
+## **📌 Hangfire Dashboard Access**
+If running with `HangfireExecution`, the **Hangfire Dashboard** will be available at:
 ```
 http://localhost:5000/hangfire
 ```
 
----
-
-## Job Execution Details
-
-### Recurring Job Configuration
-
-The application schedules a recurring job using Hangfire, which runs every **3 minutes**. The configuration for this job is defined in the `Program` class as follows:
-
-```csharp
-.ConfigureWebHostDefaults(webBuilder =>
-{
-    webBuilder.Configure(app =>
-    {
-        app.UseHangfireDashboard("/hangfire");
-
-        var jobConfig = app.ApplicationServices.GetRequiredService<IOptions<JobScheduleConfig>>().Value;
-        var cronExpression = jobConfig?.CronExpression ?? "*/3 * * * *";
-
-        RecurringJob.AddOrUpdate<TransactionJob>(
-            "process-transactions",
-            job => job.ExecuteAsync(jobConfig.InputFilePath, jobConfig.OutputFilePath),
-            cronExpression
-        );
-    });
-});
-```
-
-The **Cron expression** is configured in `appsettings.json`:
-```json
-"JobSchedule": {
-  "CronExpression": "*/3 * * * *",
-  "InputFilePath": "Data/Input/input.csv",
-  "OutputFilePath": "Data/Output/output.json"
-}
-```
-
-This setup ensures the job runs every **3 minutes**, regardless of the hour, day, or week.
+✅ The dashboard allows you to **monitor scheduled jobs** and **track execution logs**.
 
 ---
-
-### CSV File Requirements
-
-The input CSV file must:
-- Be named `input.csv`.
-- Be stored in the directory:
-  ```
-  \FinancialAnalyticsProcessor\Data\Input\input.csv
-  ```
-- This file is excluded from version control (Git) to avoid issues with branch size limits.
-
----
-
-### Validation and Error Handling
-
-The job validates transaction data using **Fluent Validation**. For example, the `Description` field must:
-1. Not be empty.
-2. Not exceed 255 characters.
-
-If a validation error occurs:
-- The affected CSV line is updated with a default description, such as:
-  ```csharp
-  var newDescription = "New Description added after failure";
-  ```
-- The processing restarts after correcting the invalid line.
-
-If a business rule validation cannot be resolved, the transaction is logged in:
-```
-\FinancialAnalyticsProcessor\Data\ErrorsInTheProcessing\ErrorsInTheProcessing.txt
-```
-
-Example log entry:
-```
-------------------------------------------------------------------------------------------
---------------------- Validation Error Logged at 2024-12-22 12:29:44 ---------------------
-Transaction Details:
-TransactionId: d90e3ac6-2291-4918-b26e-20ce26e3f229
-UserId: 2eb32a09-8303-4b05-8711-59f778eb086d
-Date: 05/02/2024 13:08:46 -03:00
-Amount: 435.03
-Category: Shopping
-Description: 
-Merchant: Kiehn Inc
-
-Errors:
-- Description is required and must not exceed 255 characters.
-```
-
----
-
-## Useful EF Core Commands
-
-### Add a New Migration
-```bash
-Add-Migration MigrationName -StartupProject FinancialAnalyticsProcessor -Project FinancialAnalyticsProcessor.Infrastructure
-```
-
-### Apply Migrations to the Database
-```bash
-Update-Database -StartupProject FinancialAnalyticsProcessor -Project FinancialAnalyticsProcessor.Infrastructure
-```
-
----
-
 ## Hangfire Database Management
 
 ### View Job Executions
@@ -211,17 +125,21 @@ DELETE FROM [HangFire].[Schema];
 
 ---
 
-## Observations
+## **📌 Summary of Execution Methods**
+| Execution Mode | Profile Name | Visual Studio Configuration | CLI Command |
+|---------------|-------------|----------------------------|-------------|
+| **Local Testing Mode** | `FinancialAnalyticsProcessor` | Select `FinancialAnalyticsProcessor` | `dotnet run --project FinancialAnalyticsProcessor` |
+| **Hangfire Recurring Jobs** | `HangfireExecution` | Select `HangfireExecution` | `dotnet run --project FinancialAnalyticsProcessor -- --use-hangfire` |
 
-- The Hangfire Dashboard is accessible at:
+---
+
+## **📌 Final Notes**
+- **Use** `FinancialAnalyticsProcessor` **for testing individual executions**.
+- **Use** `HangfireExecution` **for automated job scheduling**.
+- The **Hangfire Dashboard** can be accessed at:
   ```
   http://localhost:5000/hangfire
   ```
-- To prevent overlapping job executions, a **30-minute semaphore lock** has been added:
-  ```csharp
-  [DisableConcurrentExecution(timeoutInSeconds: 1800)]
-  ```
-- Logs detailing the execution process are displayed in the console during runtime.
+- If the job **does not execute**, check the **logs in Visual Studio's Output Window**.
 
-For further assistance, refer to the project documentation or contact the development team.
 
